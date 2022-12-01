@@ -34,5 +34,13 @@ namespace AdventOfCode
         {
             return caloriesPerElf.Max(perElf => perElf.Sum());
         }
+
+        public int SumTopThreeCaloriesAvailable()
+        {
+            return caloriesPerElf.Select(perElf => perElf.Sum())
+                                 .OrderDescending()
+                                 .Take(3)
+                                 .Sum();
+        }
     }
 }
