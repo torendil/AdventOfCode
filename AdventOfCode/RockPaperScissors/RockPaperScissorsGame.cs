@@ -15,7 +15,7 @@
                     var opponent = RockPaperScissorsParser.ParseOpponent(line[0]);
                     var player = RockPaperScissorsParser.ParsePlayer(line[2]);
 
-                    gameEntries.Add(new RockPaperScissorRound(player, opponent));
+                    gameEntries.Add(new RockPaperScissorRound(opponent, player));
                 }
             }
         }

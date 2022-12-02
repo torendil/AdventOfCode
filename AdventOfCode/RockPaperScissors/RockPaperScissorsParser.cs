@@ -18,16 +18,16 @@ namespace AdventOfCode.RockPaperScissors
             throw new InvalidEnumArgumentException();
         }
 
-        internal static RockPaperScissorValues ParsePlayer(char input)
+        internal static RockPaperScissorStrategies ParsePlayer(char input)
         {
             switch (input)
             {
                 case 'X':
-                    return RockPaperScissorValues.Rock;
+                    return RockPaperScissorStrategies.Lose;
                 case 'Y':
-                    return RockPaperScissorValues.Paper;
+                    return RockPaperScissorStrategies.Draw;
                 case 'Z':
-                    return RockPaperScissorValues.Scissors;
+                    return RockPaperScissorStrategies.Win;
             }
             throw new InvalidEnumArgumentException();
         }

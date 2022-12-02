@@ -9,7 +9,7 @@ namespace Tests.RockPaperScissors
         {
             var game = new RockPaperScissorsGame(Day2MockData.Test);
 
-            Assert.Equal(18, game.TotalScore());
+            Assert.Equal(23, game.TotalScore());
         }
     }
 }

@@ -6,6 +6,7 @@
 @"A Y
 B X
 C Z
-A Z";
+A Z
+A X";
     }
 }
