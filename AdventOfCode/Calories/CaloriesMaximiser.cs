@@ -1,6 +1,4 @@
-﻿using static System.Net.Mime.MediaTypeNames;
-
-namespace AdventOfCode
+﻿namespace AdventOfCode.Calories
 {
     public class CaloriesMaximiser
     {

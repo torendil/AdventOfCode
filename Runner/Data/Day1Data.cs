@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-internal class Day1Data
+﻿internal class Day1Data
 {
     internal static string Input = @"3344
 8938

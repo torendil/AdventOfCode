@@ -1,6 +1,6 @@
-using AdventOfCode;
+using AdventOfCode.Calories;
 
-namespace Tests
+namespace Tests.Calories
 {
     public class Day1Tests
     {
