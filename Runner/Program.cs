@@ -13,6 +13,6 @@ Console.WriteLine("Day 2: expected 12683, got " + game.TotalScore());
 Console.WriteLine();
 
 var analyser = new RucksackAnalyser(Day3Data.Input);
-Console.WriteLine("Day 3 part 1: expected 8072, got " + analyser.SumTotalPriorities());
+Console.WriteLine("Day 3 part 1: expected 8072, got " + analyser.SumPrioritiesForItemsInBothCompartments());
 Console.WriteLine("Day 3 part 2: expected 2567, got " + analyser.SumBadgesPrioritiesForTeams());
 Console.WriteLine();

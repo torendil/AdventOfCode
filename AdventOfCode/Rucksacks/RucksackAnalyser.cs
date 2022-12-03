@@ -11,19 +11,19 @@ namespace AdventOfCode.Rucksacks
             using (var reader = new StringReader(input))
             {
                 string? line;
-                List<RuckSackContent> teamBuilder = new List<RuckSackContent>(3);
+                List<RucksackContent> teamBuilder = new List<RucksackContent>(3);
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    teamBuilder.Add(new RuckSackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
+                    teamBuilder.Add(new RucksackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
                 }
                 teams = teamBuilder.Chunk(3).Select(group => new ElvesTeams(group));
             }
         }
 
-        public int SumTotalPriorities()
+        public int SumPrioritiesForItemsInBothCompartments()
         {
-            return teams.Sum(team => team.RuckSackContents.Sum(content => GetItemPriority(content.GetCommonItem())));
+            return teams.Sum(team => team.RucksackContents.Sum(rucksack => GetItemPriority(rucksack.GetItemInBothCompartments())));
         }
 
         public int SumBadgesPrioritiesForTeams()

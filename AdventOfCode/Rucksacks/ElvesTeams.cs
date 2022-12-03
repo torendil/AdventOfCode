@@ -2,16 +2,16 @@
 {
     internal class ElvesTeams
     {
-        public IEnumerable<RuckSackContent> RuckSackContents { get; internal set; }
+        public IEnumerable<RucksackContent> RucksackContents { get; internal set; }
 
-        public ElvesTeams(IEnumerable<RuckSackContent> ruckSackContents)
+        public ElvesTeams(IEnumerable<RucksackContent> ruckSackContents)
         {
-            RuckSackContents = ruckSackContents;
+            RucksackContents = ruckSackContents;
         }
 
         internal char FindBadge()
         {
-            var allItems = RuckSackContents.Select(content => content.GetAllItems());
+            var allItems = RucksackContents.Select(content => content.GetAllItems());
             
             IEnumerable<char> temp = allItems.First();
             foreach(var item in allItems.Skip(1))

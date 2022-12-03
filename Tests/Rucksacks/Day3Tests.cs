@@ -9,7 +9,7 @@ namespace Tests.Rucksacks
         {
             var analyser = new RucksackAnalyser(Day3MockData.Test);
 
-            Assert.Equal(157, analyser.SumTotalPriorities());
+            Assert.Equal(157, analyser.SumPrioritiesForItemsInBothCompartments());
         }
 
         [Fact]
