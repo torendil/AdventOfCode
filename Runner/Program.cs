@@ -12,3 +12,4 @@ Console.WriteLine(game.TotalScore());
 
 var analyser = new RucksackAnalyser(Day3Data.Input);
 Console.WriteLine(analyser.SumTotalPriorities());
+Console.WriteLine(analyser.SumBadgesPrioritiesForTeams());

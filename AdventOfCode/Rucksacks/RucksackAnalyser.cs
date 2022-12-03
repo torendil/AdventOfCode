@@ -4,24 +4,39 @@ namespace AdventOfCode.Rucksacks
 {
     public class RucksackAnalyser
     {
-        private List<RuckSackContent> contents = new List<RuckSackContent>();
+        private List<ElvesTeams> teams = new List<ElvesTeams>();
 
         public RucksackAnalyser(string input)
         {
             using (var reader = new StringReader(input))
             {
                 string? line;
+                int counter = 0;
+                List<RuckSackContent> teamBuilder = new List<RuckSackContent>(3);
 
                 while ((line = reader.ReadLine()) != null)
                 {
-                    contents.Add(new RuckSackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
+                    teamBuilder.Add(new RuckSackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
+
+                    counter++;
+                    if (counter == 3)
+                    {
+                        teams.Add(new ElvesTeams(teamBuilder));
+                        teamBuilder = new List<RuckSackContent>();
+                        counter = 0;
+                    }
                 }
             }
         }
 
         public int SumTotalPriorities()
         {
-            return contents.Sum(content => GetItemPriority(content.GetCommonItem()));
+            return teams.Sum(team => team.RuckSackContents.Sum(content => GetItemPriority(content.GetCommonItem())));
+        }
+
+        public int SumBadgesPrioritiesForTeams()
+        {
+            return teams.Sum(team => GetItemPriority(team.FindBadge()));
         }
 
         /// <summary>

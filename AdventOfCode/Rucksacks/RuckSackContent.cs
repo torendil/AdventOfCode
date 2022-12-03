@@ -11,6 +11,11 @@
             this.compartmentTwo = compartmentTwo;
         }
 
+        internal IEnumerable<char> GetAllItems()
+        {
+            return compartmentOne.Concat(compartmentTwo);
+        }
+
         internal char GetCommonItem()
         {
             return compartmentOne.Intersect(compartmentTwo).First();

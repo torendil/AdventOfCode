@@ -5,7 +5,7 @@ namespace Tests.Rucksacks
     public class Day3Tests
     {
         [Fact]
-        public void ShouldCalculateTotalPrioritiesOfCommonInRucksacks()
+        public void ShouldCalculateTotalPrioritiesOfCommonsInRucksacks()
         {
             var analyser = new RucksackAnalyser(Day3MockData.Test);
 
@@ -13,11 +13,11 @@ namespace Tests.Rucksacks
         }
 
         [Fact]
-        public void ShouldCalculateHighestCaloriesAvailable()
+        public void ShouldCalculateScoresForBadges()
         {
             var analyser = new RucksackAnalyser(Day3MockData.Test);
 
-            Assert.Equal(157, analyser.SumTotalPriorities());
+            Assert.Equal(70, analyser.SumBadgesPrioritiesForTeams());
         }
     }
 }
