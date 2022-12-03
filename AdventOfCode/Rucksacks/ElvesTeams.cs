@@ -2,9 +2,9 @@
 {
     internal class ElvesTeams
     {
-        public List<RuckSackContent> RuckSackContents { get; internal set; }
+        public IEnumerable<RuckSackContent> RuckSackContents { get; internal set; }
 
-        public ElvesTeams(List<RuckSackContent> ruckSackContents)
+        public ElvesTeams(IEnumerable<RuckSackContent> ruckSackContents)
         {
             RuckSackContents = ruckSackContents;
         }

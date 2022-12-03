@@ -4,28 +4,20 @@ namespace AdventOfCode.Rucksacks
 {
     public class RucksackAnalyser
     {
-        private List<ElvesTeams> teams = new List<ElvesTeams>();
+        private IEnumerable<ElvesTeams> teams = new List<ElvesTeams>();
 
         public RucksackAnalyser(string input)
         {
             using (var reader = new StringReader(input))
             {
                 string? line;
-                int counter = 0;
                 List<RuckSackContent> teamBuilder = new List<RuckSackContent>(3);
 
                 while ((line = reader.ReadLine()) != null)
                 {
                     teamBuilder.Add(new RuckSackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
-
-                    counter++;
-                    if (counter == 3)
-                    {
-                        teams.Add(new ElvesTeams(teamBuilder));
-                        teamBuilder = new List<RuckSackContent>();
-                        counter = 0;
-                    }
                 }
+                teams = teamBuilder.Chunk(3).Select(group => new ElvesTeams(group));
             }
         }
 
