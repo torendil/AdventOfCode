@@ -14,10 +14,8 @@
         /// </summary>
         internal bool HasOneIncludedSector()
         {
-            return sectorsPerElf.First().FirstBoundary <= sectorsPerElf.Last().FirstBoundary &&
-                        sectorsPerElf.First().SecondBoundary >= sectorsPerElf.Last().SecondBoundary ||
-                   sectorsPerElf.Last().FirstBoundary <= sectorsPerElf.First().FirstBoundary &&
-                        sectorsPerElf.Last().SecondBoundary >= sectorsPerElf.First().SecondBoundary;
+            return sectorsPerElf.First().Includes(sectorsPerElf.Last()) ||
+                   sectorsPerElf.Last().Includes(sectorsPerElf.First());
         }
 
         /// <summary>
@@ -25,17 +23,7 @@
         /// </summary>
         internal bool HasOneOverlappingSector()
         {
-            return 
-                !( // exclude
-                    (
-                    // first sector entirely under second sector
-                        sectorsPerElf.First().SecondBoundary < sectorsPerElf.Last().FirstBoundary ||
-                    // first sector entirely over second sector
-                        sectorsPerElf.First().FirstBoundary > sectorsPerElf.Last().SecondBoundary
-                    ) 
-                && // exclude opposite
-                   (sectorsPerElf.Last().SecondBoundary < sectorsPerElf.First().FirstBoundary ||
-                        sectorsPerElf.Last().FirstBoundary > sectorsPerElf.First().SecondBoundary));
+            return sectorsPerElf.First().Overlaps(sectorsPerElf.Last());
         }
     }
 }

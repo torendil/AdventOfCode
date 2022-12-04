@@ -16,5 +16,15 @@ namespace AdventOfCode.CleaningSectors
             FirstBoundary = firstBoundary;
             SecondBoundary = secondBoundary;
         }
+
+        public bool Includes(Sector other)
+        {
+            return this.FirstBoundary <= other.FirstBoundary && this.SecondBoundary >= other.SecondBoundary;
+        }
+
+        public bool Overlaps(Sector other)
+        {
+            return FirstBoundary <= other.SecondBoundary && SecondBoundary >= other.FirstBoundary;
+        }
     }
 }
