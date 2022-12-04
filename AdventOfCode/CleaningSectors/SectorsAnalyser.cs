@@ -2,24 +2,23 @@
 {
     public class SectorsAnalyser
     {
-        private List<CleaningTeam> cleaningTeams = new List<CleaningTeam>();
+        private readonly List<CleaningTeam> cleaningTeams = new();
 
         public SectorsAnalyser(string input)
         {
-            using (var reader = new StringReader(input))
+            using var reader = new StringReader(input);
+
+            string? line;
+            while ((line = reader.ReadLine()) != null)
             {
-                string? line;
-                while ((line = reader.ReadLine()) != null)
+                var sectors = new List<Sector>();
+                foreach (var elf in line.Split(','))
                 {
-                    var sectors = new List<Sector>();
-                    foreach (var elf in line.Split(','))
-                    {
-                        var textSectors = elf.Split('-');
-                        sectors.Add(new Sector(int.Parse(textSectors.First()), int.Parse(textSectors.Last())));
-                    }
-                    
-                    cleaningTeams.Add(new CleaningTeam(sectors));
+                    var textSectors = elf.Split('-');
+                    sectors.Add(new Sector(int.Parse(textSectors.First()), int.Parse(textSectors.Last())));
                 }
+
+                cleaningTeams.Add(new CleaningTeam(sectors));
             }
         }
 

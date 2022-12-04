@@ -6,30 +6,24 @@ namespace AdventOfCode.RockPaperScissors
     {
         internal static RockPaperScissorValues ParseOpponent(char input)
         {
-            switch (input)
+            return input switch
             {
-                case 'A':
-                    return RockPaperScissorValues.Rock;
-                case 'B':
-                    return RockPaperScissorValues.Paper;
-                case 'C':
-                    return RockPaperScissorValues.Scissors;
-            }
-            throw new InvalidEnumArgumentException();
+                'A' => RockPaperScissorValues.Rock,
+                'B' => RockPaperScissorValues.Paper,
+                'C' => RockPaperScissorValues.Scissors,
+                _ => throw new InvalidEnumArgumentException(),
+            };
         }
 
         internal static RockPaperScissorStrategies ParsePlayer(char input)
         {
-            switch (input)
+            return input switch
             {
-                case 'X':
-                    return RockPaperScissorStrategies.Lose;
-                case 'Y':
-                    return RockPaperScissorStrategies.Draw;
-                case 'Z':
-                    return RockPaperScissorStrategies.Win;
-            }
-            throw new InvalidEnumArgumentException();
+                'X' => RockPaperScissorStrategies.Lose,
+                'Y' => RockPaperScissorStrategies.Draw,
+                'Z' => RockPaperScissorStrategies.Win,
+                _ => throw new InvalidEnumArgumentException(),
+            };
         }
     }
 }

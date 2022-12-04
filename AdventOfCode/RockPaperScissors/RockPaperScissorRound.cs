@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel;
-using System.Linq.Expressions;
 
 namespace AdventOfCode.RockPaperScissors
 {
@@ -24,58 +23,46 @@ namespace AdventOfCode.RockPaperScissors
 
         internal int PlayerScore()
         {
-            switch (strategy)
+            return strategy switch
             {
-                case RockPaperScissorStrategies.Win:
-                    return WinScore + ScoreMove(HowToWin());
-                case RockPaperScissorStrategies.Draw:
-                    return DrawScore + ScoreMove(opponentMove);
-                case RockPaperScissorStrategies.Lose:
-                    return LoseScore + ScoreMove(HowToLose());
-            }
-            throw new InvalidEnumArgumentException(nameof(strategy));
+                RockPaperScissorStrategies.Win => WinScore + ScoreMove(HowToWin()),
+                RockPaperScissorStrategies.Draw => DrawScore + ScoreMove(opponentMove),
+                RockPaperScissorStrategies.Lose => LoseScore + ScoreMove(HowToLose()),
+                _ => throw new InvalidEnumArgumentException(nameof(strategy)),
+            };
         }
 
         private RockPaperScissorValues HowToWin()
         {
-            switch (opponentMove)
+            return opponentMove switch
             {
-                case RockPaperScissorValues.Rock:
-                    return RockPaperScissorValues.Paper;
-                case RockPaperScissorValues.Paper:
-                    return RockPaperScissorValues.Scissors;
-                case RockPaperScissorValues.Scissors:
-                    return RockPaperScissorValues.Rock;
-            }
-            throw new InvalidEnumArgumentException(nameof(opponentMove));
+                RockPaperScissorValues.Rock => RockPaperScissorValues.Paper,
+                RockPaperScissorValues.Paper => RockPaperScissorValues.Scissors,
+                RockPaperScissorValues.Scissors => RockPaperScissorValues.Rock,
+                _ => throw new InvalidEnumArgumentException(nameof(opponentMove)),
+            };
         }
 
         private RockPaperScissorValues HowToLose()
         {
-            switch (opponentMove)
+            return opponentMove switch
             {
-                case RockPaperScissorValues.Rock:
-                    return RockPaperScissorValues.Scissors;
-                case RockPaperScissorValues.Paper:
-                    return RockPaperScissorValues.Rock;
-                case RockPaperScissorValues.Scissors:
-                    return RockPaperScissorValues.Paper;
-            }
-            throw new InvalidEnumArgumentException(nameof(opponentMove));
+                RockPaperScissorValues.Rock => RockPaperScissorValues.Scissors,
+                RockPaperScissorValues.Paper => RockPaperScissorValues.Rock,
+                RockPaperScissorValues.Scissors => RockPaperScissorValues.Paper,
+                _ => throw new InvalidEnumArgumentException(nameof(opponentMove)),
+            };
         }
 
-        private int ScoreMove(RockPaperScissorValues move)
+        private static int ScoreMove(RockPaperScissorValues move)
         {
-            switch (move)
+            return move switch
             {
-                case RockPaperScissorValues.Rock:
-                    return RockScore;
-                case RockPaperScissorValues.Paper:
-                    return PaperScore;
-                case RockPaperScissorValues.Scissors:
-                    return ScissorsScore;
-            }
-            throw new InvalidEnumArgumentException(nameof(move));
+                RockPaperScissorValues.Rock => RockScore,
+                RockPaperScissorValues.Paper => PaperScore,
+                RockPaperScissorValues.Scissors => ScissorsScore,
+                _ => throw new InvalidEnumArgumentException(nameof(move)),
+            };
         }
     }
 }

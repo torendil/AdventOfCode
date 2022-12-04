@@ -1,24 +1,21 @@
-﻿using AdventOfCode.RockPaperScissors;
-
-namespace AdventOfCode.Rucksacks
+﻿namespace AdventOfCode.Rucksacks
 {
     public class RucksackAnalyser
     {
-        private IEnumerable<ElvesTeams> teams = new List<ElvesTeams>();
+        private readonly IEnumerable<ElvesTeams> teams;
 
         public RucksackAnalyser(string input)
         {
-            using (var reader = new StringReader(input))
-            {
-                string? line;
-                List<RucksackContent> teamBuilder = new List<RucksackContent>(3);
+            using var reader = new StringReader(input);
 
-                while ((line = reader.ReadLine()) != null)
-                {
-                    teamBuilder.Add(new RucksackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
-                }
-                teams = teamBuilder.Chunk(3).Select(group => new ElvesTeams(group));
+            string? line;
+            List<RucksackContent> teamBuilder = new(3);
+
+            while ((line = reader.ReadLine()) != null)
+            {
+                teamBuilder.Add(new RucksackContent(line.Take(line.Length / 2), line.Skip(line.Length / 2)));
             }
+            teams = teamBuilder.Chunk(3).Select(group => new ElvesTeams(group));
         }
 
         public int SumPrioritiesForItemsInBothCompartments()
@@ -36,7 +33,7 @@ namespace AdventOfCode.Rucksacks
         /// </summary>
         /// <param name="item"></param>
         /// <returns></returns>
-        private int GetItemPriority(char item)
+        private static int GetItemPriority(char item)
         {
             if (char.IsLower(item))
             {

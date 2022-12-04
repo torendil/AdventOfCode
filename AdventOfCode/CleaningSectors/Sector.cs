@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AdventOfCode.CleaningSectors
+﻿namespace AdventOfCode.CleaningSectors
 {
     internal class Sector
     {
@@ -19,7 +13,7 @@ namespace AdventOfCode.CleaningSectors
 
         public bool Includes(Sector other)
         {
-            return this.FirstBoundary <= other.FirstBoundary && this.SecondBoundary >= other.SecondBoundary;
+            return FirstBoundary <= other.FirstBoundary && SecondBoundary >= other.SecondBoundary;
         }
 
         public bool Overlaps(Sector other)
