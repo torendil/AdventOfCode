@@ -20,4 +20,5 @@ Console.WriteLine();
 
 var sectorsAnalyser = new SectorsAnalyser(Day4Data.Input);
 Console.WriteLine("Day 4: expected 466, got " + sectorsAnalyser.NumberOfIncludedSectors());
+Console.WriteLine("Day 4: expected 865, got " + sectorsAnalyser.NumberOfOverlappingSectors());
 Console.WriteLine();

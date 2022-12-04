@@ -11,5 +11,13 @@ namespace Tests.CleaningSections
 
             Assert.Equal(2, analyser.NumberOfIncludedSectors());
         }
+
+        [Fact]
+        public void ShouldCalculateOverlappingSectors()
+        {
+            var analyser = new SectorsAnalyser(Day4MockData.Test);
+
+            Assert.Equal(4, analyser.NumberOfOverlappingSectors());
+        }
     }
 }

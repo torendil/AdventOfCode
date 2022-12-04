@@ -27,5 +27,10 @@
         {
             return cleaningTeams.Count(team => team.HasOneIncludedSector());
         }
+
+        public int NumberOfOverlappingSectors()
+        {
+            return cleaningTeams.Count(team => team.HasOneOverlappingSector());
+        }
     }
 }
