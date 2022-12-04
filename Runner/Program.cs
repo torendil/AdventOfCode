@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 
 using AdventOfCode.Calories;
+using AdventOfCode.CleaningSectors;
 using AdventOfCode.RockPaperScissors;
 using AdventOfCode.Rucksacks;
 
@@ -12,7 +13,11 @@ var game = new RockPaperScissorsGame(Day2Data.Input);
 Console.WriteLine("Day 2: expected 12683, got " + game.TotalScore());
 Console.WriteLine();
 
-var analyser = new RucksackAnalyser(Day3Data.Input);
-Console.WriteLine("Day 3 part 1: expected 8072, got " + analyser.SumPrioritiesForItemsInBothCompartments());
-Console.WriteLine("Day 3 part 2: expected 2567, got " + analyser.SumBadgesPrioritiesForTeams());
+var rucksackAnalyser = new RucksackAnalyser(Day3Data.Input);
+Console.WriteLine("Day 3 part 1: expected 8072, got " + rucksackAnalyser.SumPrioritiesForItemsInBothCompartments());
+Console.WriteLine("Day 3 part 2: expected 2567, got " + rucksackAnalyser.SumBadgesPrioritiesForTeams());
+Console.WriteLine();
+
+var sectorsAnalyser = new SectorsAnalyser(Day4Data.Input);
+Console.WriteLine("Day 4: expected 466, got " + sectorsAnalyser.NumberOfIncludedSectors());
 Console.WriteLine();
