@@ -25,6 +25,5 @@ Console.WriteLine("Day 4: expected 865, got " + sectorsAnalyser.NumberOfOverlapp
 Console.WriteLine();
 
 var handler = new CratesHandler(Day5Data.Input);
-Console.WriteLine("Day 5: expected TGWSMRBPN, got " + new string(handler.ProcessMoves()));
-Console.WriteLine("Day 5: expected 865, got " + sectorsAnalyser.NumberOfOverlappingSectors());
+Console.WriteLine("Day 5: expected TZLTLWRNF, got " + new string(handler.ProcessMoves()));
 Console.WriteLine();

@@ -2,7 +2,7 @@
 {
     public class CratesHandler
     {
-        private readonly List<Stack<char>> stacksOfCrates = new();
+        private readonly List<List<char>> stacksOfCrates = new();
         private readonly List<Moves> moves = new();
 
         public CratesHandler(string input)
@@ -28,8 +28,7 @@
             }
             foreach (var tempStack in tempStacks)
             {
-                tempStack.Reverse();
-                stacksOfCrates.Add(new Stack<char>(tempStack));
+                stacksOfCrates.Add(new List<char>(tempStack));
             }
 
             while ((line = reader.ReadLine()) != null)
@@ -74,11 +73,10 @@
         {
             foreach (var move in moves)
             {
-                for (int i = 0; i < move.amountMoved; i++)
-                {
-                    var crate = stacksOfCrates[move.startPosition - 1].Pop();
-                    stacksOfCrates[move.endPosition - 1].Push(crate);
-                }
+                var originStack = stacksOfCrates[move.startPosition - 1];
+                var crates = originStack.Take(move.amountMoved);
+                stacksOfCrates[move.endPosition - 1].InsertRange(0, crates);
+                originStack.RemoveRange(0, move.amountMoved);
             }
             return stacksOfCrates.Select(stack => stack.First()).ToArray();
         }

@@ -9,7 +9,7 @@ namespace Tests.MovingCrates
         {
             var handler = new CratesHandler(Day5MockData.Test);
 
-            Assert.Equal("CMZ", new string(handler.ProcessMoves()));
+            Assert.Equal("MCD", new string(handler.ProcessMoves()));
         }
     }
 }
