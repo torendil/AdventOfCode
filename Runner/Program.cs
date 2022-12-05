@@ -2,6 +2,7 @@
 
 using AdventOfCode.Calories;
 using AdventOfCode.CleaningSectors;
+using AdventOfCode.MovingCrates;
 using AdventOfCode.RockPaperScissors;
 using AdventOfCode.Rucksacks;
 
@@ -21,4 +22,9 @@ Console.WriteLine();
 var sectorsAnalyser = new SectorsAnalyser(Day4Data.Input);
 Console.WriteLine("Day 4: expected 466, got " + sectorsAnalyser.NumberOfIncludedSectors());
 Console.WriteLine("Day 4: expected 865, got " + sectorsAnalyser.NumberOfOverlappingSectors());
+Console.WriteLine();
+
+var handler = new CratesHandler(Day5Data.Input);
+Console.WriteLine("Day 5: expected TGWSMRBPN, got " + new string(handler.ProcessMoves()));
+Console.WriteLine("Day 5: expected 865, got " + sectorsAnalyser.NumberOfOverlappingSectors());
 Console.WriteLine();

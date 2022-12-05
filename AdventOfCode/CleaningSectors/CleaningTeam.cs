@@ -2,7 +2,7 @@
 {
     internal class CleaningTeam
     {
-        private IEnumerable<Sector> sectorsPerElf;
+        private readonly IEnumerable<Sector> sectorsPerElf;
 
         public CleaningTeam(IEnumerable<Sector> sectorsPerElf)
         {
