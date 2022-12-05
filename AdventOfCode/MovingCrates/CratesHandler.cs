@@ -2,67 +2,14 @@
 {
     public class CratesHandler
     {
-        private readonly List<List<char>> stacksOfCrates = new();
+        private readonly List<List<char>> stacksOfCrates;
         private readonly List<Moves> moves = new();
 
         public CratesHandler(string input)
         {
-            using var reader = new StringReader(input);
-
-            string? line;
-            List<List<char>> tempStacks = new();
-            bool needsInit = true;
-
-            while ((line = reader.ReadLine()) != null && !string.IsNullOrEmpty(line))
-            {
-                if (needsInit)
-                {
-                    InitTempStacks(tempStacks, line);
-                    needsInit = false;
-                }
-
-                if (line.Contains('[')) // discard line with stack numbers
-                {
-                    AddCratesOnTempStacks(line, tempStacks);
-                }
-            }
-            foreach (var tempStack in tempStacks)
-            {
-                stacksOfCrates.Add(new List<char>(tempStack));
-            }
-
-            while ((line = reader.ReadLine()) != null)
-            {
-                moves.Add(new Moves(line));
-            }
-        }
-
-        /// <summary>
-        /// Mutates the tempStack passed in parameters and inits it to the right number
-        /// </summary>
-        private static void InitTempStacks(List<List<char>> tempStacks, string line)
-        {
-            // '[X] ' (with trailing whitespace) is 4 chars, add a last one as the final entry doesn't have trailing whitespace
-            for (int i = 0; i < line.Length / 4 + 1; i++)
-            {
-                tempStacks.Add(new List<char>());
-            }
-        }
-
-        /// <summary>
-        /// Mutates the tempStack passed in parameters and adds crates to it
-        /// </summary>
-        private static void AddCratesOnTempStacks(string line, List<List<char>> tempStacks)
-        {
-            // '[X] ' (with trailing whitespace) is 4 chars
-            var crates = line.Chunk(4);
-            for (int stackIndex = 0; stackIndex < crates.Count(); stackIndex++)
-            {
-                if (crates.ElementAt(stackIndex).Contains('['))
-                {
-                    tempStacks[stackIndex].Add(crates.ElementAt(stackIndex)[1]); // take only X from "[X] "
-                }
-            }
+            var parser = new CratesParser(input);
+            stacksOfCrates = parser.StacksOfCrates;
+            moves = parser.Moves;
         }
 
         /// <summary>
