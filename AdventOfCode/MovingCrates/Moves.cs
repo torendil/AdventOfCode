@@ -2,9 +2,9 @@
 {
     internal class Moves
     {
-        public int startPosition { get; }
-        public int endPosition { get; }
-        public int amountMoved { get; }
+        public int StartPosition { get; }
+        public int EndPosition { get; }
+        public int AmountMoved { get; }
 
         /// <summary>
         /// Parses "move 1 from 2 to 1"
@@ -13,9 +13,9 @@
         public Moves(string input)
         {
             var splittedInput = input.Split(' ');
-            amountMoved = int.Parse(splittedInput[1]);
-            startPosition = int.Parse(splittedInput[3]);
-            endPosition = int.Parse(splittedInput[5]);
+            AmountMoved = int.Parse(splittedInput[1]);
+            StartPosition = int.Parse(splittedInput[3]);
+            EndPosition = int.Parse(splittedInput[5]);
         }
     }
 }

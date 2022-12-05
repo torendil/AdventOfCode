@@ -20,10 +20,10 @@
         {
             foreach (var move in moves)
             {
-                var originStack = stacksOfCrates[move.startPosition - 1];
-                var crates = originStack.Take(move.amountMoved);
-                stacksOfCrates[move.endPosition - 1].InsertRange(0, crates);
-                originStack.RemoveRange(0, move.amountMoved);
+                var originStack = stacksOfCrates[move.StartPosition - 1];
+                var crates = originStack.Take(move.AmountMoved);
+                stacksOfCrates[move.EndPosition - 1].InsertRange(0, crates);
+                originStack.RemoveRange(0, move.AmountMoved);
             }
             return stacksOfCrates.Select(stack => stack.First()).ToArray();
         }
