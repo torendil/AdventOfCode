@@ -20,5 +20,25 @@
             }
             return result;
         }
+
+        public Folder? GetSmallestFolderOver(int aim, Folder? current = null)
+        {
+            current ??= root;
+            var result = current.SubFolders.Where(sub => sub.Size > aim);
+            foreach (var sub in result)
+            {
+                var smallestInSub = GetSmallestFolderOver(aim, sub);
+                if (smallestInSub != null)
+                {
+                    result = result.Append(smallestInSub);
+                }
+            }
+            return result.OrderBy(folder => folder.Size).FirstOrDefault();
+        }
+
+        public int GetTotalSize()
+        {
+            return root.Size;
+        }
     }
 }
