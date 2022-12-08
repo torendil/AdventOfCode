@@ -33,3 +33,7 @@ var processor = new SignalProcessor(Day6Data.Input);
 Console.WriteLine("Day 6: expected 1042, got " + processor.GetStartOfPacketMarkerLocation());
 Console.WriteLine("Day 6: expected 2980, got " + processor.GetStartOfMessageMarkerLocation());
 Console.WriteLine();
+
+var fileSystemAnalyser = new FileSystemAnalyser(Day7Data.Input);
+Console.WriteLine("Day 7: expected 1042, got " + fileSystemAnalyser.GetFoldersUnder100k().Sum(folder => folder.Size));
+Console.WriteLine();
