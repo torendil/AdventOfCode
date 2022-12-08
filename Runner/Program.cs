@@ -2,6 +2,7 @@
 
 using AdventOfCode.Calories;
 using AdventOfCode.CleaningSectors;
+using AdventOfCode.CommunicationDevice;
 using AdventOfCode.MovingCrates;
 using AdventOfCode.RockPaperScissors;
 using AdventOfCode.Rucksacks;
@@ -26,4 +27,8 @@ Console.WriteLine();
 
 var handler = new CratesHandler(Day5Data.Input);
 Console.WriteLine("Day 5: expected TZLTLWRNF, got " + new string(handler.ProcessMoves()));
+Console.WriteLine();
+
+var processor = new SignalProcessor(Day6Data.Input);
+Console.WriteLine("Day 6: expected 1042, got " + processor.GetMarkerLocation());
 Console.WriteLine();

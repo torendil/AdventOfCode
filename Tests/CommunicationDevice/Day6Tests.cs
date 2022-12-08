@@ -1,5 +1,4 @@
-using AdventOfCode;
-using AdventOfCode.MovingCrates;
+using AdventOfCode.CommunicationDevice;
 
 namespace Tests.CommunicationDevice
 {
