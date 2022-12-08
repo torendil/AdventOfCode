@@ -9,11 +9,24 @@ namespace Tests.CommunicationDevice
         [InlineData("nppdvjthqldpwncqszvftbrmjlhg", 6)]
         [InlineData("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 10)]
         [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 11)]
-        public void ShouldFindMarker(string feed, int expectedLocation)
+        public void ShouldFindStartOfPacketMarker(string feed, int expectedLocation)
         {
             var signalProcessor = new SignalProcessor(feed);
 
-            Assert.Equal(expectedLocation, signalProcessor.GetMarkerLocation());
+            Assert.Equal(expectedLocation, signalProcessor.GetStartOfPacketMarkerLocation());
+        }
+
+        [Theory]
+        [InlineData("mjqjpqmgbljsphdztnvjfqwrcgsmlb", 19)]
+        [InlineData("bvwbjplbgvbhsrlpgdmjqwftvncz", 23)]
+        [InlineData("nppdvjthqldpwncqszvftbrmjlhg", 23)]
+        [InlineData("nznrnfrfntjfmvfwmzdfjlvtqnbhcprsg", 29)]
+        [InlineData("zcfzfwzzqfrljwzlrfnpqdbhtmscgvjw", 26)]
+        public void ShouldFindStartOfMessageMarker(string feed, int expectedLocation)
+        {
+            var signalProcessor = new SignalProcessor(feed);
+
+            Assert.Equal(expectedLocation, signalProcessor.GetStartOfMessageMarkerLocation());
         }
     }
 }

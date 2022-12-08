@@ -2,7 +2,8 @@
 
 public class SignalProcessor
 {
-    private const int bufferSize = 4;
+    private const int startOfPacketBufferSize = 4;
+    private const int startOfMessagesBufferSize = 14;
     private readonly string feed;
 
     public SignalProcessor(string feed)
@@ -10,7 +11,7 @@ public class SignalProcessor
         this.feed = feed;
     }
 
-    public int GetMarkerLocation()
+    private int GetMarkerLocation(int bufferSize)
     {
         using var reader = new StringReader(feed);
 
@@ -22,9 +23,9 @@ public class SignalProcessor
         while ((currentCharAsInt = reader.Read()) != -1)
         {
             position++;
-            ChangeBuffer(buffer, currentCharAsInt);
+            ChangeBuffer(buffer, currentCharAsInt, bufferSize);
             
-            if (buffer.Distinct().Count() == 4)
+            if (buffer.Distinct().Count() == bufferSize)
             {
                 return position;
             }
@@ -33,12 +34,22 @@ public class SignalProcessor
         return -1;
     }
 
-    private static void ChangeBuffer(Queue<char> buffer, int currentCharAsInt)
+    private static void ChangeBuffer(Queue<char> buffer, int currentCharAsInt, int bufferSize)
     {
         buffer.Enqueue((char)currentCharAsInt);
         if (buffer.Count > bufferSize)
         {
             buffer.Dequeue();
         }
+    }
+
+    public int GetStartOfPacketMarkerLocation()
+    {
+        return GetMarkerLocation(startOfPacketBufferSize);
+    }
+
+    public int GetStartOfMessageMarkerLocation()
+    {
+        return GetMarkerLocation(startOfMessagesBufferSize);
     }
 }

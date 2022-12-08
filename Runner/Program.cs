@@ -30,5 +30,6 @@ Console.WriteLine("Day 5: expected TZLTLWRNF, got " + new string(handler.Process
 Console.WriteLine();
 
 var processor = new SignalProcessor(Day6Data.Input);
-Console.WriteLine("Day 6: expected 1042, got " + processor.GetMarkerLocation());
+Console.WriteLine("Day 6: expected 1042, got " + processor.GetStartOfPacketMarkerLocation());
+Console.WriteLine("Day 6: expected 2980, got " + processor.GetStartOfMessageMarkerLocation());
 Console.WriteLine();
