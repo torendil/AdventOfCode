@@ -35,5 +35,9 @@ Console.WriteLine("Day 6: expected 2980, got " + processor.GetStartOfMessageMark
 Console.WriteLine();
 
 var fileSystemAnalyser = new FileSystemAnalyser(Day7Data.Input);
-Console.WriteLine("Day 7: expected 1042, got " + fileSystemAnalyser.GetFoldersUnder100k().Sum(folder => folder.Size));
+Console.WriteLine("Day 7: expected 1778099, got " + fileSystemAnalyser.GetFoldersUnder100k().Sum(folder => folder.Size));
+
+var available = 70000000 - fileSystemAnalyser.GetTotalSize();
+var aim = 30000000 - available;
+Console.WriteLine("Day 7: expected 11766511, got " + fileSystemAnalyser.GetSmallestFolderOver(aim)?.Size);
 Console.WriteLine();
