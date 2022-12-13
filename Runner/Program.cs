@@ -5,6 +5,7 @@ using AdventOfCode.CleaningSectors;
 using AdventOfCode.CommunicationDevice;
 using AdventOfCode.MovingCrates;
 using AdventOfCode.RockPaperScissors;
+using AdventOfCode.RopeBridges;
 using AdventOfCode.Rucksacks;
 using AdventOfCode.TreeHouse;
 
@@ -44,5 +45,10 @@ Console.WriteLine("Day 7: expected 11766511, got " + fileSystemAnalyser.GetSmall
 Console.WriteLine();
 
 var forestAnalyser = new ForestAnalyser(Day8Data.Input);
-Console.WriteLine("Day 8: expected 1832, got " + forestAnalyser.AmountOfVisibleTrees());
 Console.WriteLine("Day 8: expected 157320, got " + forestAnalyser.HighestScenicView());
+Console.WriteLine("Day 8: expected 1832, got " + forestAnalyser.AmountOfVisibleTrees());
+Console.WriteLine();
+
+var traveller = new RopeBridgesTraveller(Day9Data.Input);
+Console.WriteLine("Day 9: expected 5981, got " + traveller.PointsTravelledByTail());
+Console.WriteLine();
