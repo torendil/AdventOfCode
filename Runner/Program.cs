@@ -6,6 +6,7 @@ using AdventOfCode.CommunicationDevice;
 using AdventOfCode.MovingCrates;
 using AdventOfCode.RockPaperScissors;
 using AdventOfCode.Rucksacks;
+using AdventOfCode.TreeHouse;
 
 var maximiser = new CaloriesMaximiser(Day1Data.Input);
 Console.WriteLine("Day 1: expected 206104, got " + maximiser.SumTopThreeCaloriesAvailable());
@@ -41,3 +42,7 @@ var available = 70000000 - fileSystemAnalyser.GetTotalSize();
 var aim = 30000000 - available;
 Console.WriteLine("Day 7: expected 11766511, got " + fileSystemAnalyser.GetSmallestFolderOver(aim)?.Size);
 Console.WriteLine();
+
+var forestAnalyser = new ForestAnalyser(Day8Data.Input);
+Console.WriteLine("Day 8: expected 1832, got " + forestAnalyser.AmountOfVisibleTrees());
+Console.WriteLine("Day 8: expected 157320, got " + forestAnalyser.HighestScenicView());
