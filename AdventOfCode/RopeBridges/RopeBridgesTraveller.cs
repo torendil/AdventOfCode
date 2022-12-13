@@ -5,15 +5,19 @@ namespace AdventOfCode.RopeBridges
 {
     public class RopeBridgesTraveller
     {
-        private List<Point> historyOfHead = new List<Point>();
-        private List<Point> historyOfTail = new List<Point>();
+        private readonly List<List<Point>> ropePointsHistory = new();
+        private readonly int ropeLength;
 
-        public RopeBridgesTraveller(string input)
+        public RopeBridgesTraveller(string input, int length)
         {
-            using var reader = new StringReader(input);
+            ropeLength = length;
 
-            historyOfHead.Add(new Point(0, 0));
-            historyOfTail.Add(new Point(0, 0));
+            for (int i = 0; i < length; i++)
+            {
+                ropePointsHistory.Add(new List<Point> { new Point(0, 0) });
+            }
+
+            using var reader = new StringReader(input);
 
             string? line;
             while ((line = reader.ReadLine()) != null)
@@ -28,15 +32,18 @@ namespace AdventOfCode.RopeBridges
 
         private void Move(char direction, int distance)
         {
-            for (int i = 0; i < distance; i++)
+            for (int step = 0; step < distance; step++)
             {
-                var newPointForHead = GetNewPoint(direction, historyOfHead.Last());
-                historyOfHead.Add(newPointForHead);
-                AdjustTailPosition(newPointForHead, direction);
+                var newPointForHead = GetNewPointInDirection(direction, ropePointsHistory[0].Last());
+                ropePointsHistory[0].Add(newPointForHead);
+                for (int nodeIndex = 1; nodeIndex < ropeLength; nodeIndex++)
+                {
+                    AdjustTailPosition(direction, nodeIndex);
+                }
             }
         }
 
-        private Point GetNewPoint(char direction, Point current)
+        private static Point GetNewPointInDirection(char direction, Point current)
         {
             return direction switch
             {
@@ -48,26 +55,45 @@ namespace AdventOfCode.RopeBridges
             };
         }
 
-        private void AdjustTailPosition(Point newPointForHead, char direction)
+        private void AdjustTailPosition(char direction, int nodeIndex)
         {
-            var oldTailPoint = historyOfTail.Last();
-            if(MaxDistanceInACoordinate(newPointForHead, oldTailPoint) > 1)
+            var oldTailPoint = ropePointsHistory[nodeIndex].Last();
+            var newPointForPreviousNode = ropePointsHistory[nodeIndex - 1].Last();
+            if (MaxDistanceInACoordinate(newPointForPreviousNode, oldTailPoint) > 1)
             {
-                if (DifferenceIsDiagonal(oldTailPoint, newPointForHead))
+                if (DifferenceIsDiagonal(oldTailPoint, newPointForPreviousNode))
                 {
-                    var x = oldTailPoint.X + ((newPointForHead.X - oldTailPoint.X) > 0 ? 1 : -1);
-                    var y = oldTailPoint.Y + ((newPointForHead.Y - oldTailPoint.Y) > 0 ? 1 : -1);
-                    historyOfTail.Add(new Point(x, y));
+                    var x = oldTailPoint.X + ((newPointForPreviousNode.X - oldTailPoint.X) > 0 ? 1 : -1);
+                    var y = oldTailPoint.Y + ((newPointForPreviousNode.Y - oldTailPoint.Y) > 0 ? 1 : -1);
+                    ropePointsHistory[nodeIndex].Add(new Point(x, y));
                 }
                 else
                 {
-                    historyOfTail.Add(GetNewPoint(direction, oldTailPoint));
+                    ropePointsHistory[nodeIndex].Add(GetNewPointToBridgeGapOneDirection(oldTailPoint, newPointForPreviousNode));
                 }
             }
             else
             {
-                historyOfTail.Add(new Point(oldTailPoint.X, oldTailPoint.Y));
+                ropePointsHistory[nodeIndex].Add(new Point(oldTailPoint.X, oldTailPoint.Y));
             }
+        }
+
+        private Point GetNewPointToBridgeGapOneDirection(Point oldTailPoint, Point newPointForPreviousNode)
+        {
+            var horizontalDiff = Math.Abs(newPointForPreviousNode.X - oldTailPoint.X);
+
+            var x = oldTailPoint.X;
+            var y = oldTailPoint.Y;
+
+            if (horizontalDiff > 1)
+            {
+                x += (newPointForPreviousNode.X - oldTailPoint.X) > 0 ? 1 : -1;
+            }
+            else
+            {
+                y += (newPointForPreviousNode.Y - oldTailPoint.Y) > 0 ? 1 : -1;
+            }
+            return new Point(x, y);
         }
 
         private static int MaxDistanceInACoordinate(Point pointA, Point pointB)
@@ -82,7 +108,7 @@ namespace AdventOfCode.RopeBridges
 
         public int PointsTravelledByTail()
         {
-            return historyOfTail.Distinct().Count();
+            return ropePointsHistory.Last().Distinct().Count();
         }
     }
 }

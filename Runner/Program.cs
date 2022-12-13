@@ -49,6 +49,8 @@ Console.WriteLine("Day 8: expected 157320, got " + forestAnalyser.HighestScenicV
 Console.WriteLine("Day 8: expected 1832, got " + forestAnalyser.AmountOfVisibleTrees());
 Console.WriteLine();
 
-var traveller = new RopeBridgesTraveller(Day9Data.Input);
-Console.WriteLine("Day 9: expected 5981, got " + traveller.PointsTravelledByTail());
+var travellerPart1 = new RopeBridgesTraveller(Day9Data.Input, 2);
+Console.WriteLine("Day 9: expected 5981, got " + travellerPart1.PointsTravelledByTail());
+var travellerPart2 = new RopeBridgesTraveller(Day9Data.Input, 10);
+Console.WriteLine("Day 9: expected 2352, got " + travellerPart2.PointsTravelledByTail());
 Console.WriteLine();
