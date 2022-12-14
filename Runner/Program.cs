@@ -55,7 +55,7 @@ var travellerPart2 = new RopeBridgesTraveller(Day9Data.Input, 10);
 Console.WriteLine("Day 9: expected 2352, got " + travellerPart2.PointsTravelledByTail());
 Console.WriteLine();
 
-var simulator = new ClockCircuitSimulator(Day10Data.Input);
+var simulator = new DisplaySimulator(Day10Data.Input);
 Console.WriteLine("Day 10: expected 13060, got " + 
     (simulator.GetSignalStrengthAt(20) + 
     simulator.GetSignalStrengthAt(60) + 

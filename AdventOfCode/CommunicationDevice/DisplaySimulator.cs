@@ -1,12 +1,12 @@
 ﻿namespace AdventOfCode.CommunicationDevice
 {
-    public class ClockCircuitSimulator
+    public class DisplaySimulator
     {
         private const int NumberOfLinesOnDisplay = 6;
         private const int NumberOfPixelsPerLine = 40;
         readonly List<int> registerValues = new();
 
-        public ClockCircuitSimulator(string input)
+        public DisplaySimulator(string input)
         {
             using var reader = new StringReader(input);
 

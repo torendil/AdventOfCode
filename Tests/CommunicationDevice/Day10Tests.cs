@@ -13,7 +13,7 @@ namespace Tests.CommunicationDevice
         [InlineData(220, 3960)]
         public void ShouldFindSignalStrengths(int step, int expectedResult)
         {
-            var simulator = new ClockCircuitSimulator(Day10MockData.Test);
+            var simulator = new DisplaySimulator(Day10MockData.Test);
 
             Assert.Equal(expectedResult, simulator.GetSignalStrengthAt(step));
         }
@@ -21,7 +21,7 @@ namespace Tests.CommunicationDevice
         [Fact]
         public void ShouldDrawImages()
         {
-            var simulator = new ClockCircuitSimulator(Day10MockData.Test);
+            var simulator = new DisplaySimulator(Day10MockData.Test);
 
             Assert.Equal(Day10MockData.Result, simulator.GetDisplay());
         }
