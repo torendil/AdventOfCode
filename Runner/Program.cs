@@ -54,3 +54,15 @@ Console.WriteLine("Day 9: expected 5981, got " + travellerPart1.PointsTravelledB
 var travellerPart2 = new RopeBridgesTraveller(Day9Data.Input, 10);
 Console.WriteLine("Day 9: expected 2352, got " + travellerPart2.PointsTravelledByTail());
 Console.WriteLine();
+
+var simulator = new ClockCircuitSimulator(Day10Data.Input);
+Console.WriteLine("Day 10: expected 13060, got " + 
+    (simulator.GetSignalStrengthAt(20) + 
+    simulator.GetSignalStrengthAt(60) + 
+    simulator.GetSignalStrengthAt(100) + 
+    simulator.GetSignalStrengthAt(140) + 
+    simulator.GetSignalStrengthAt(180) + 
+    simulator.GetSignalStrengthAt(220)));
+Console.WriteLine(simulator.GetDisplay());
+Console.WriteLine("Day 10: expecting FJUBULRZ to display");
+Console.WriteLine();

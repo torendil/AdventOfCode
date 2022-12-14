@@ -38,7 +38,7 @@ namespace AdventOfCode.RopeBridges
                 ropePointsHistory[0].Add(newPointForHead);
                 for (int nodeIndex = 1; nodeIndex < ropeLength; nodeIndex++)
                 {
-                    AdjustTailPosition(direction, nodeIndex);
+                    AdjustTailPosition(nodeIndex);
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace AdventOfCode.RopeBridges
             };
         }
 
-        private void AdjustTailPosition(char direction, int nodeIndex)
+        private void AdjustTailPosition(int nodeIndex)
         {
             var oldTailPoint = ropePointsHistory[nodeIndex].Last();
             var newPointForPreviousNode = ropePointsHistory[nodeIndex - 1].Last();
@@ -78,7 +78,7 @@ namespace AdventOfCode.RopeBridges
             }
         }
 
-        private Point GetNewPointToBridgeGapOneDirection(Point oldTailPoint, Point newPointForPreviousNode)
+        private static Point GetNewPointToBridgeGapOneDirection(Point oldTailPoint, Point newPointForPreviousNode)
         {
             var horizontalDiff = Math.Abs(newPointForPreviousNode.X - oldTailPoint.X);
 
