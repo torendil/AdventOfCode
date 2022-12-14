@@ -3,6 +3,7 @@
 using AdventOfCode.Calories;
 using AdventOfCode.CleaningSectors;
 using AdventOfCode.CommunicationDevice;
+using AdventOfCode.MonkeyBusiness;
 using AdventOfCode.MovingCrates;
 using AdventOfCode.RockPaperScissors;
 using AdventOfCode.RopeBridges;
@@ -65,4 +66,9 @@ Console.WriteLine("Day 10: expected 13060, got " +
     simulator.GetSignalStrengthAt(220)));
 Console.WriteLine(simulator.GetDisplay());
 Console.WriteLine("Day 10: expecting FJUBULRZ to display");
+Console.WriteLine();
+
+var monkeyBehaviorAnalyser = new MonkeyBehaviorAnalyser(Day11Data.Input);
+var simulation = monkeyBehaviorAnalyser.GetMonkeyBusiness(20).OrderDescending().ToArray();
+Console.WriteLine("Day 11: expected 113220, got " + simulation[0] * simulation[1]);
 Console.WriteLine();
