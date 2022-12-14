@@ -1,11 +1,11 @@
-﻿
-namespace AdventOfCode.MonkeyBusiness
+﻿namespace AdventOfCode.MonkeyBusiness
 {
     public class MonkeyDefinition
     {
-        public required List<int> Items { get; init; }
+        public required List<long> Items { get; init; }
 
-        public required Func<int, int> WorryLevelAfterInspection { get; init; }
-        public required Func<int, int> ThrowTo { get; init; }
+        public required Func<long, long> WorryLevelAfterInspection { get; init; }
+        public required Func<long, int> ThrowTo { get; init; }
+        public required int Divider { get; init; }
     }
 }

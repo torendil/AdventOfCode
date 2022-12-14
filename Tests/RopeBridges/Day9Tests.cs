@@ -1,4 +1,3 @@
-using AdventOfCode;
 using AdventOfCode.RopeBridges;
 
 namespace Tests.RopeBridges

@@ -1,6 +1,4 @@
-using AdventOfCode;
 using AdventOfCode.CommunicationDevice;
-using Tests.CleaningSections;
 
 namespace Tests.CommunicationDevice
 {

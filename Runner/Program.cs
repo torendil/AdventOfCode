@@ -69,6 +69,8 @@ Console.WriteLine("Day 10: expecting FJUBULRZ to display");
 Console.WriteLine();
 
 var monkeyBehaviorAnalyser = new MonkeyBehaviorAnalyser(Day11Data.Input);
-var simulation = monkeyBehaviorAnalyser.GetMonkeyBusiness(20).OrderDescending().ToArray();
+var simulation = monkeyBehaviorAnalyser.GetMonkeyBusiness(20, 3).OrderDescending().ToArray();
 Console.WriteLine("Day 11: expected 113220, got " + simulation[0] * simulation[1]);
+simulation = monkeyBehaviorAnalyser.GetMonkeyBusiness(10000, 1).OrderDescending().ToArray();
+Console.WriteLine("Day 11: expected 30599555965, got " + simulation[0] * simulation[1]);
 Console.WriteLine();

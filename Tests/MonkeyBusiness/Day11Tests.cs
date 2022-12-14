@@ -9,7 +9,7 @@ namespace Tests.MonkeyBusiness
         {
             var analyser = new MonkeyBehaviorAnalyser(Day11MockData.MonkeyDefinitions);
 
-            var monkeyBusiness = analyser.GetMonkeyBusiness(20).OrderDescending().ToArray();
+            var monkeyBusiness = analyser.GetMonkeyBusiness(20, 3).OrderDescending().ToArray();
             Assert.Equal(10605, monkeyBusiness[0] * monkeyBusiness[1]);
         }
 
@@ -18,8 +18,8 @@ namespace Tests.MonkeyBusiness
         {
             var analyser = new MonkeyBehaviorAnalyser(Day11MockData.MonkeyDefinitions);
 
-            var monkeyBusiness = analyser.GetMonkeyBusiness(20).OrderDescending().ToArray();
-            Assert.Equal(10605, monkeyBusiness[0] * monkeyBusiness[1]);
+            var monkeyBusiness = analyser.GetMonkeyBusiness(10000, 1).OrderDescending().ToArray();
+            Assert.Equal(2713310158, monkeyBusiness[0] * monkeyBusiness[1]);
         }
     }
 }
